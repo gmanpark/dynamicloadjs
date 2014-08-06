@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko">
+	<meta charset="UTF-8">
+	<title>Dynamic load simple example</title>
+	<script src=js/dynamicLoad.js></script>
+	<script>
+		/*
+		* It should be run on the local server.
+		* on FileSystem, it will be cause Cross Origin Problem.
+		* */
+		window.onload = function(){
+			dynamicLoad('header', 'inc_header.html');
+			dynamicLoad('footer', 'inc_footer.html');
+		}
+	</script>
+</head>
+<body>
+<div id="wrap">
+	<!-- header -->
+	<div id="header"></div>
+
+	<!-- container -->
+	<div id="container">
+		<div id="content">
+
+		</div>
+	</div>
+
+	<!-- footer -->
+	<div id="footer"></div>
+</div>
+</body>
+</html>
