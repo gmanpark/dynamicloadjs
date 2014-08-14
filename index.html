@@ -3,6 +3,9 @@
 <head lang="ko">
 	<meta charset="UTF-8">
 	<title>Dynamic load simple example</title>
+	<!--<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>-->
+	<!--<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>-->
+	<link rel="stylesheet" href="css/my.css"/>
 	<script src=js/dynamicLoad.js></script>
 	<script>
 		/*
@@ -10,25 +13,53 @@
 		* on FileSystem, it will be cause Cross Origin Problem.
 		* */
 		window.onload = function(){
-			dynamicLoad('header', 'inc_header.html');
-			dynamicLoad('footer', 'inc_footer.html');
+			if( isGlobal() ){
+				dynamicLoad('header', 'templates/inc_en_header.html');
+				dynamicLoad('footer', 'templates/inc_en_footer.html');
+			}else{
+				dynamicLoad('header', 'templates/inc_header.html');
+				dynamicLoad('footer', 'templates/inc_footer.html');
+			}
+			removeScriptNode('.markupScript');
 		}
+
 	</script>
 </head>
 <body>
 <div id="wrap">
 	<!-- header -->
-	<div id="header"></div>
+	<div id="header">
+
+	</div>
 
 	<!-- container -->
 	<div id="container">
+		<div class="snb">
+			<div class="nav">
+				<script class="markupScript">
+					if(isGlobal()){
+						document.write('<span>side</span>')
+					}else{
+						document.write('<span>사이드</span>')
+					}
+				</script>
+			</div>
+		</div>
 		<div id="content">
-
+			<script class="markupScript">
+				if(isGlobal()){
+					document.write('<span>content</span>')
+				}else{
+					document.write('<span>본문 내용</span>')
+				}
+			</script>
 		</div>
 	</div>
 
 	<!-- footer -->
-	<div id="footer"></div>
+	<div id="footer">
+
+	</div>
 </div>
 </body>
 </html>

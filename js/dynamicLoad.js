@@ -1,5 +1,6 @@
 function dynamicLoad(sID, sURL) {
     var xhr = getXMLHttpRequest();
+    xhr.overrideMimeType('text/plain; charset=utf-8');
     xhr.open("GET", sURL, true);
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState === 4) {
@@ -30,4 +31,21 @@ function getXMLHttpRequest(){
         return null;
     }
     return xhr;
+}
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function isGlobal(){
+    return  getParameterByName('lang') === 'global';
+}
+
+function removeScriptNode(sClassName){
+    for(var i=0;i<=document.querySelectorAll(sClassName).length;i++) {
+        document.querySelector(sClassName).parentNode.removeChild(document.querySelectorAll(sClassName)[0]);
+    }
 }
