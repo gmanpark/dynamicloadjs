@@ -1,13 +1,23 @@
 # Created by http://www.gitignore.io
 
+### Webstorm IDE ###
+.idea
+
 ### SVN ###
 .svn/
 
+### GIT ###
+.gitignore
 
 ### Node ###
 # Logs
 logs
 *.log
+
+### Grunt ###
+Gruntfile.js
+.grunt
+.ftppass
 
 # Runtime data
 pids
@@ -29,7 +39,7 @@ build/Release
 # Dependency directory
 # Commenting this out is preferred by some people, see
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
-node_modules/
-.gitignore
+node_modules
+
 # Users Environment Variables
 .lock-wscript
